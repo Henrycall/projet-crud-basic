@@ -1,14 +1,14 @@
 import { IsString, IsNotEmpty, IsNumber, IsCurrency } from "class-validator";
-import { User } from "src/dtos/user/user";
+import { User } from "@prisma/client";
 
 export class ServiceCar {
-   user: User
-   
-   @IsString()
-   plate: String
+   userId: string; // Adicionado o campo userId
 
    @IsString()
-   brand: String
+   plate: string;
+
+   @IsString()
+   brand: string;
 
    @IsNotEmpty()
    model: string;
@@ -22,9 +22,18 @@ export class ServiceCar {
 
    @IsNotEmpty()
    @IsString({ message: 'O valor precisa ser uma string' })
- //  @IsCurrency({ symbol: 'R$', allow_negatives: false, allow_decimal: true })
-  // @Transform(valor => parseFloat(), { toClassOnly: true }) // Transforma a string em número
    valor: number;
 
-   serviceID: String
+   serviceID: string;
+
+   constructor(userId: string, plate: string, brand: string, model: string, year: number, carPart: string, valor: number, serviceID: string) {
+      this.userId = userId;
+      this.plate = plate;
+      this.brand = brand;
+      this.model = model;
+      this.year = year;
+      this.carPart = carPart;
+      this.valor = valor;
+      this.serviceID = serviceID;
+   }
 }
