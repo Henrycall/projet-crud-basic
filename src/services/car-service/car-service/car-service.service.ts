@@ -12,7 +12,6 @@ export class CarServiceService {
         try {
             const { userId, plate, brand, model, year, carPart, valor, serviceID } = body;
 
-            // Verifica se o usuário existe
             const user = await this.prisma.user.findUnique({
                 where: {
                     id: userId,

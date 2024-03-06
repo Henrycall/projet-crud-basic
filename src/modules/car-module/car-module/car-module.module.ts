@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
-import { ServiceCarControllerController } from '../../../controllers/service-car-controller/service-car-controller.controller'
+import { CarServiceService } from 'src/services/car-service/car-service/car-service.service';
+import { ServiceCarController } from '../../../controllers/service-car-controller/service-car-controller.controller'
 
 
 @Module({
     imports: [],
-    controllers: [ServiceCarControllerController],
-    providers: [PrismaService],
+    controllers: [ServiceCarController],
+    providers: [PrismaService,CarServiceService],
 })
 
 export class CarModuleModule {}
