@@ -8,7 +8,7 @@ export class ServiceCarController {
     constructor(private readonly carService: CarServiceService) {}
 
     @Post('newOrder')
-    async postNewOrder(@Body() body) {
+    async postNewOrder(@Body() body:ServiceCar) {
         try {
             const result = await this.carService.newOrder(body);
             return { success: true, data: result };

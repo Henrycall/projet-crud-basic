@@ -1,7 +1,7 @@
 import { IsString, IsNotEmpty, IsNumber, IsCurrency } from "class-validator";
-import { User } from "@prisma/client";
 
 export class ServiceCar {
+   
    userId: string; // Adicionado o campo userId
 
    @IsString()
@@ -23,6 +23,8 @@ export class ServiceCar {
    @IsNotEmpty()
    @IsString({ message: 'O valor precisa ser uma string' })
    valor: number;
+
+   createdAt: Date
 
    serviceID: string;
 

@@ -17,20 +17,15 @@ model User {
   createdAt DateTime   @default(now())
   serviceCars ServiceCar[]
 }
-
 model ServiceCar {
-  id        String     @id
   plate     String
   brand     String
   model     String
   year      Int
   carPart   String
   valor     Float
-  serviceID String
-  
-  // Adicionado campo userId
+  serviceID String @id
   userId    String
-  user      User       @relation(fields: [userId], references: [id])
-  
   createdAt DateTime   @default(now())
+  user      User       @relation(fields: [userId], references: [id])
 }

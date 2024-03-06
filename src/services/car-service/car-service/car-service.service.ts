@@ -11,29 +11,24 @@ export class CarServiceService {
     async newOrder(body: ServiceCar) {
         try {
             const { userId, plate, brand, model, year, carPart, valor, serviceID } = body;
-
             const user = await this.prisma.user.findUnique({
                 where: {
                     id: userId,
                 },
             });
 
-            if (!user) {
-                throw new BadRequestException('Usuário não encontrado');
-            }
-
-            // Cria um objeto com a estrutura esperada pelo Prisma
+            if (!user)  throw new BadRequestException('Usuário não encontrado');
+            
             const prismaServiceCar: PrismaServiceCar = {
-                id: uuidv4(), 
+                userId, 
                 plate,
                 brand,
                 model,
                 year,
                 carPart,
                 valor,
-                serviceID,
-                userId,
-                createdAt: new Date(), 
+                serviceID: uuidv4(),
+                createdAt: new Date()
             };
 
     
