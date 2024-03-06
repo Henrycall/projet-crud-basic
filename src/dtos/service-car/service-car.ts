@@ -22,7 +22,7 @@ export class ServiceCar {
 
    @IsNotEmpty()
    @IsString({ message: 'O valor precisa ser uma string' })
-   valor: number;
+   valor: string;
 
    createdAt: Date
 
